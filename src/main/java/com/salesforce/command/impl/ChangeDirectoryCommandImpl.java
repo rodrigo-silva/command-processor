@@ -65,9 +65,12 @@ public class ChangeDirectoryCommandImpl extends BaseCommand implements ChangeDir
         if(isRootPath(currentPath)) {
             // root has no parent
             return currentPath;
-        } else {
-            return currentPath.substring(0, currentPath.lastIndexOf(File.separatorChar));
         }
+        if(isTopLevelFolder(currentPath)) {
+         return currentPath.substring(0, currentPath.indexOf(File.separatorChar) + 1);
+        }
+
+        return currentPath.substring(0, currentPath.lastIndexOf(File.separatorChar));
     }
 
     /**
@@ -83,6 +86,18 @@ public class ChangeDirectoryCommandImpl extends BaseCommand implements ChangeDir
             // Windows is X:\
             return path.length() == 3;
         }
+    }
+
+    /**
+     * Tells if this path is top level folder.<br/>
+     * /linuxTopLevelFolder <br/>
+     * C:\windowsTopLevelFolder
+     * @param path any path
+     * @return true if is top level folder
+     */
+    private boolean isTopLevelFolder(final String path) {
+        // if both indexes are same, means there is only one path separator
+        return path.indexOf(File.separator) == path.lastIndexOf(File.separator);
     }
 
     /**

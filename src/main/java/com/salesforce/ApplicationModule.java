@@ -25,6 +25,6 @@ public class ApplicationModule extends AbstractModule {
         bind(ListFilesCommand.class).to(ListFilesCommandImpl.class).in(Singleton.class);
         bind(MakeDirectoryCommand.class).to(MakeDirectoryCommandImpl.class).in(Singleton.class);
         bind(NoActionCommand.class).to(NoActionCommandImpl.class).in(Singleton.class);
-        bind(UnrecognizedCommand.class).to(UnrecognizedCommand.class).in(Singleton.class);
+        bind(UnrecognizedCommand.class).to(UnrecognizedCommandImpl.class).in(Singleton.class);
     }
 }

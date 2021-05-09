@@ -53,7 +53,7 @@ public class Application {
      * @return UserInput
      */
     private UserInput getUserInput(ContextStatus contextStatus, Input scanner) {
-        output.println(">> ");
+        output.print(">> ");
         final String[] input = scanner.nextLine().trim().split(" ", 2);
         final String arguments = input.length > 1 ? input[1] : "";
 

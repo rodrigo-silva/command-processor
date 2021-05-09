@@ -82,4 +82,5 @@ public class ChangeDirectoryCommandTest extends CommandBaseTest {
         // then
         assertEquals(parentPath, contextStatusSpy.getCurrentPath());
     }
+
 }
