@@ -1,10 +1,8 @@
 package com.salesforce.command.impl;
 
-import com.google.inject.Inject;
 import com.salesforce.command.Command;
 import com.salesforce.command.ContextStatus;
 import com.salesforce.output.Output;
-
 import java.io.IOException;
 
 /**
@@ -27,7 +25,7 @@ public abstract class BaseCommand implements Command {
         if(this.argumentsAreValid(arguments)) {
             this.doExecute(arguments, contextStatus);
         } else {
-            output.println("Invalid arguments!");
+            output.println("Invalid syntax!");
             output.println(this.getHelpText());
         }
     }
@@ -64,6 +62,6 @@ public abstract class BaseCommand implements Command {
         if(argumentsLine.trim().isEmpty()) {
             return new String[0];
         }
-        return argumentsLine.trim().split("\\ \\s+ \\ ");
+        return argumentsLine.trim().split("\\s*\\s");
     }
 }

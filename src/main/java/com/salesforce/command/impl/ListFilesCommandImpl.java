@@ -1,9 +1,9 @@
 package com.salesforce.command.impl;
 
 import com.salesforce.command.ContextStatus;
+import com.salesforce.command.ListFilesCommand;
 import com.salesforce.output.Output;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 
 import javax.inject.Inject;
@@ -13,14 +13,12 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * This command lists the contents (directories and files) of the current directory.
- * It writes a single item per line. If there are no items, print nothing.
- * If printing recursively, before printing contents, print the full path of the current directory.
+ * ListFilesCommand implementation
  */
-public class ListFilesCommand extends BaseCommand {
+public class ListFilesCommandImpl extends BaseCommand implements ListFilesCommand {
 
     @Inject
-    public ListFilesCommand(final Output output) {
+    public ListFilesCommandImpl(final Output output) {
        super(output);
     }
 
@@ -38,7 +36,8 @@ public class ListFilesCommand extends BaseCommand {
     @Override
     protected String getHelpText() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("[-r] Recursive. If provided, prints everything in the current directory and all subdirectories\n");
+        sb.append("Syntax: ls [-r]\n");
+        sb.append("[-r] Recursive. If provided, prints everything in the current directory and all subdirectories");
 
         return sb.toString();
     }

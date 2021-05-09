@@ -47,7 +47,7 @@ public class Application {
      * @return UserInput
      */
     private static UserInput getUserInput(ContextStatus contextStatus, Scanner scanner) {
-        output.println(contextStatus.getCurrentPath() + "> ");
+        output.println(">> ");
         final String[] input = scanner.nextLine().trim().split(" ", 2);
         final String arguments = input.length > 1 ? input[1] : "";
 

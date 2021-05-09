@@ -1,25 +1,18 @@
 package com.salesforce.command.impl;
 
-import com.salesforce.command.ContextStatus;
-import com.salesforce.output.Output;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
-
 import java.io.IOException;
 
 import static  org.mockito.Mockito.*;
 
 public class ListFilesCommandTest extends CommandBaseTest{
-    private Output outputMock;
-    private ListFilesCommand listFilesCommandSpy;
-    private ContextStatus contextStatusSpy;
+    private ListFilesCommandImpl listFilesCommandSpy;
 
     @Before
     public void setUp() throws IOException {
-        outputMock = mock(Output.class);
-        contextStatusSpy = spy(new ContextStatus(workingDir.getCanonicalPath()));
-        listFilesCommandSpy = spy(new ListFilesCommand(outputMock));
+
+        listFilesCommandSpy = spy(new ListFilesCommandImpl(outputMock));
     }
 
     @Test

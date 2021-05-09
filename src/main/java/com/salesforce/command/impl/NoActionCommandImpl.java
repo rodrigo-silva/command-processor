@@ -2,29 +2,30 @@ package com.salesforce.command.impl;
 
 import com.google.inject.Inject;
 import com.salesforce.command.ContextStatus;
+import com.salesforce.command.NoActionCommand;
 import com.salesforce.output.Output;
 
 /**
- * Encapsulates all unknown Commands
+ * Implements NoActionCommand
  */
-public class UnrecognizedCommand extends BaseCommand {
+public class NoActionCommandImpl extends BaseCommand implements NoActionCommand {
 
     @Inject
-    public UnrecognizedCommand(Output output) {
+    public NoActionCommandImpl(Output output) {
         super(output);
     }
 
     /**
      * Always true
      * @param arguments list of arguments
-     * @return Always true
+     * @return always true
      */
     protected boolean argumentsAreValid(String[] arguments) {
         return true;
     }
 
     /**
-     * Returns empty message
+     * Does not have any help text
      * @return empty string
      */
     protected String getHelpText() {
@@ -32,11 +33,11 @@ public class UnrecognizedCommand extends BaseCommand {
     }
 
     /**
-     * Prints out an error message
+     * Does not do anything
      * @param arguments user arguments, already validated
      * @param contextStatus current context status
      */
     protected void doExecute(String[] arguments, ContextStatus contextStatus) {
-        this.output.println("Unrecognized command!");
+        // no action to do
     }
 }
