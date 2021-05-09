@@ -6,7 +6,8 @@ import com.salesforce.output.Output;
 import java.io.IOException;
 
 /**
- * Base class for all Command implementations. Contains common behavior and template workflow
+ * Base class for all Command implementations. Contains common behavior and template workflow.
+ * Commands implementation may use this base command class as basic skeleton
  */
 public abstract class BaseCommand implements Command {
     protected Output output;

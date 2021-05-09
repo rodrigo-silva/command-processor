@@ -7,6 +7,6 @@ import java.io.IOException;
  */
 public interface Command {
 
-
     void execute(String argumentsLine, ContextStatus contextStatus) throws IOException;
+
 }

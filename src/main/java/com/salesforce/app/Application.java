@@ -10,7 +10,7 @@ import com.salesforce.output.Output;
 import java.io.File;
 
 /**
- * Represents the running application layer
+ * Represents the running application
  */
 public class Application {
     final Injector injector;
@@ -48,6 +48,7 @@ public class Application {
 
     /**
      * Gets the user input in the form of {@link UserInput}.
+     *
      * @param contextStatus current contextStatus
      * @param scanner to read input from
      * @return UserInput
