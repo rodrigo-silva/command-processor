@@ -43,7 +43,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.salesforce.Application</mainClass>
+                            <mainClass>com.salesforce.MainClass</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

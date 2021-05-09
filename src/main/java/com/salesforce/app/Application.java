@@ -1,23 +1,30 @@
-package com.salesforce;
-import com.google.inject.Guice;
+package com.salesforce.app;
+
 import com.google.inject.Injector;
 import com.salesforce.command.Command;
 import com.salesforce.command.ContextStatus;
 import com.salesforce.command.factory.CommandFactory;
+import com.salesforce.input.Input;
 import com.salesforce.output.Output;
 
 import java.io.File;
-import java.util.Scanner;
 
 /**
- * Represents the Command Processor Application
+ * Represents the running application layer
  */
 public class Application {
-    private static Output output;
+    final Injector injector;
+    private Output output;
 
-    public static void main(String[] args) {
-        final Injector injector = Guice.createInjector(new ApplicationModule());
-        final Scanner scanner = new Scanner(System.in);
+    public Application(Injector injector) {
+        this.injector = injector;
+    }
+
+    /**
+     * Runs the application
+     */
+    public void run(){
+        final Input scanner = this.injector.getInstance(Input.class);
         output = injector.getInstance(Output.class);
         final CommandFactory commandFactory = injector.getInstance(CommandFactory.class);
 
@@ -37,7 +44,6 @@ public class Application {
             scanner.close();
             output.println("Have a nice day!");
         }
-
     }
 
     /**
@@ -46,7 +52,7 @@ public class Application {
      * @param scanner to read input from
      * @return UserInput
      */
-    private static UserInput getUserInput(ContextStatus contextStatus, Scanner scanner) {
+    private UserInput getUserInput(ContextStatus contextStatus, Input scanner) {
         output.println(">> ");
         final String[] input = scanner.nextLine().trim().split(" ", 2);
         final String arguments = input.length > 1 ? input[1] : "";
@@ -57,7 +63,7 @@ public class Application {
     /**
      * Represents User's input as command name and its arguments
      */
-    static private class UserInput {
+    private class UserInput {
         private String commandName;
         private String arguments;
 
